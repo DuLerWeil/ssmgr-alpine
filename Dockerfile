@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.6
 
 LABEL maintainer="DuLerWeil <dulerweil@gmail.com>"
 ARG TZ='Asia/Shanghai'
