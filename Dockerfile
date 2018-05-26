@@ -8,7 +8,6 @@ ENV SLV 3.1.3
 
 RUN apk upgrade --update \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
     && apk add bash tzdata libsodium nodejs \
     # Build environment setup
     && apk add --no-cache --virtual .build-deps \
