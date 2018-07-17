@@ -4,7 +4,7 @@ LABEL maintainer="DuLerWeil <dulerweil@gmail.com>"
 ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
-ENV SLV 3.1.3
+ENV SLV 3.2.0
 
 RUN apk upgrade --update \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
