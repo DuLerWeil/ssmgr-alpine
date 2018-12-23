@@ -1,14 +1,15 @@
-FROM alpine:3.6
+FROM node:8-alpine
 
 LABEL maintainer="DuLerWeil <dulerweil@gmail.com>"
 ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
-ENV SLV 3.2.0
+ENV SLV 3.2.3
+ENV SSMGR 0.29.5
 
 RUN apk upgrade --update \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && apk add bash tzdata libsodium nodejs \
+    && apk add bash tzdata libsodium \
     # Build environment setup
     && apk add --no-cache --virtual .build-deps \
         autoconf \
@@ -25,9 +26,8 @@ RUN apk upgrade --update \
         curl \
         tar \
         git \
-        nodejs-npm \
     # Install shadowsocks-manager with npm
-    && npm i -g shadowsocks-manager \
+    && npm i -g shadowsocks-manager@$SSMGR --unsafe-perm \
     # Get shadowsocks-libev source code
     && cd /tmp \
     && curl -sSLO https://github.com/shadowsocks/shadowsocks-libev/releases/download/v$SLV/shadowsocks-libev-$SLV.tar.gz \
@@ -46,4 +46,4 @@ RUN apk upgrade --update \
     # Clean
     && rm -rf /tmp/shadowsocks-libev-* /var/cache/apk/*
 
-ENTRYPOINT ["/usr/bin/ssmgr"]
+CMD ["ssmgr"]
