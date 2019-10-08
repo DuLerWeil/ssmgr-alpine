@@ -1,11 +1,11 @@
-FROM node:8-alpine
+FROM node:12-alpine
 
 LABEL maintainer="DuLerWeil <dulerweil@gmail.com>"
 ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
-ENV SLV 3.2.3
-ENV SSMGR 0.29.5
+ENV SLV 3.3.1
+ENV SSMGR 0.33.27
 
 RUN apk upgrade --update \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
