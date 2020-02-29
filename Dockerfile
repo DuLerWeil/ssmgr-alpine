@@ -4,8 +4,8 @@ LABEL maintainer="DuLerWeil <dulerweil@gmail.com>"
 ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
-ENV SLV 3.3.1
-ENV SSMGR 0.33.27
+ENV SLV 3.3.3
+ENV SSMGR 0.34.11
 
 RUN apk upgrade --update \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
